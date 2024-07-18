@@ -1,3 +1,5 @@
+function createMap(earthQuakes) {
+
 // Create the tile layer that will be the background of the map
 let streetMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -16,7 +18,7 @@ let quakeMaps = {
 // Create the map object
 let map = L.map("map", {
     center: [44.58, -103.46],
-    zoom: 10,
+    zoom: 3,
     layers: [streetMap, quakeMaps]
 });
 
@@ -24,27 +26,31 @@ let map = L.map("map", {
 L.control.layers(baseMaps, quakeMaps, {
     collapsed: false
 }).addTo(map);
+}
 
 // Create a function for the markers
 function createMarkers(response) {
+    let features = response.features;
+    
+    // Initialize an array to hold earthquakes
+    let quakeMarkers = [];
 
-// Retrieve "place" property from response.data
-let places = response.features.properties.place;
+    features.forEach(feature => {
+        let id = feature.id;
+        let geometry = feature.geometry;
+        let coordinates = geometry.coordinates;
 
-// Initialize an array to hold earthquakes
-let quakeMarkers = []
+        // For each event, create a marker, plus bind a popup with name
+        let quakeMarker = L.marker([coordinates[1], coordinates[0]])
+            .bindPopup("<h3>" + id + "</h3><h3>Coordinates: " + coordinates + "</h3>");
 
-// Loop through JSON
-for (let i = 0; i < response.length; i++)
-    let event = place[i];
+        // Add markers to quakeMarkers array
+        quakeMarkers.push(quakeMarker);
+    });
 
-    // For each event, create a marker, plus bind a popup with name
+    // Create a layer group that's made from the new array, and pass it to the createMap function.
+    createMap(L.layerGroup(quakeMarkers));
 }
-
-
-
-
-
 
 
 // Create a function to determine the marker color based on earthquake depth
@@ -61,9 +67,9 @@ function markerColor(depth) {
   L.circle(, {
     fillOpacity: 0.75,
     color: "white",
-    fillColor: markerColor(features.geometry.coordinates[]),
+    fillColor: markerColor(),
     // Adjust the radius.
-    radius: Math.sqrt() * 500
+    radius: Math.sqrt(features.properties.mag) * 500
   }).bindPopup(`<h1>${}</h1> <hr> <h3>Earthquake: ${}</h3>`).addTo(myMap);
 }
 
