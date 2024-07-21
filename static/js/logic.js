@@ -1,3 +1,5 @@
+let map;
+
 function createMap(earthquakes) {
 
     // Create the tile layer that will be the background of the map
@@ -16,7 +18,7 @@ function createMap(earthquakes) {
     };
     
     // Create the map object
-    let map = L.map("map", {
+    map = L.map("map", {
         center: [44.58, -103.46],
         zoom: 5,
         layers: [streetMap, earthquakes]
@@ -26,8 +28,11 @@ function createMap(earthquakes) {
     L.control.layers(baseMaps, quakeMaps, {
         collapsed: false
     }).addTo(map);
-    }
-    
+
+// Adding the legend to the map
+legend.addTo(map);
+}
+
 // Create a function for the earthquakes
 function createCircles(response) {
     let features = response.features;
@@ -67,33 +72,26 @@ function createCircles(response) {
 }
 
 // Perform an API call to the API to get the earthquake information. Call createCircles when it completes.
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson").then(createCircles);
-
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson").then(createCircles);
 
 // Configure the legend
 let legend = L.control({ position: "bottomright" });
 legend.onAdd = function() {
-  let div = L.DomUtil.create("div", "info legend");
-  let limits = ;
-  let colors = ;
-  let labels = [];
+    let div = L.DomUtil.create("div", "info legend");
+    let legendLimits = ['less than 10 feet below', '10 to 30 feet below', '30 to 50 feet below', '50 to 70 feet below', '70 to 90 feet below', 'deeper than 90 feet'];
+    let legendColors = ["#92BF50", "#FFFAA0", "#FAFA33", "#FFFF00", "#FFC000", "#FF0000", ];
+    let labels = [];
+    
+    // Add the minimum and maximum.
+    let legendInfo = "<h2>Quake Depth</h2>"
 
-  // Add the minimum and maximum.
-  let legendInfo = "<h1>Population with Children<br />(ages 6-17)</h1>" +
-    "<div class=\"labels\">" +
-      "<div class=\"min\">" + limits[0] + "</div>" +
-      "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
-    "</div>";
+    div.innerHTML = legendInfo;
 
-  div.innerHTML = legendInfo;
+    legendLimits.forEach(function(legendLimit, index) {
+        labels.push("<li style=\"background-color: " + legendColors[index] + "\">" + legendLimit + "</li>");
+    });
 
-  limits.forEach(function(limit, index) {
-    labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
-  });
+    div.innerHTML += "<ul>" + labels.join("") + "</ul>";
+    return div;
+  };
 
-  div.innerHTML += "<ul>" + labels.join("") + "</ul>";
-  return div;
-};
-
-// Adding the legend to the map
-legend.addTo(myMap);
