@@ -60,7 +60,7 @@ function createCircles(response) {
             fillOpacity: 0.75,
             color: "black",
             fillColor: markerColor(depth),
-            radius: Math.sqrt(feature.properties.mag) * 10
+            radius: Math.sqrt(feature.properties.mag) * 11
         }).bindPopup(`<h3>Magnitude: ${feature.properties.mag}</h3><h3>Depth: ${depth}</h3><h3>Latitude: ${coordinates[1]}</h3><h3>Longitude: ${coordinates[0]}</h3>`);
 
         // Add markers to quakeMarkers array
@@ -72,7 +72,7 @@ function createCircles(response) {
 }
 
 // Perform an API call to the API to get the earthquake information. Call createCircles when it completes.
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson").then(createCircles);
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson").then(createCircles);
 
 // Configure the legend
 let legend = L.control({ position: "bottomright" });
