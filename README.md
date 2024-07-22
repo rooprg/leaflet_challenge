@@ -12,7 +12,7 @@ Citations:
 
 (1) Shades of Yellow. (2023). Retrieved from https://htmlcolorcodes.com/colors/shades-of-yellow/
 
-(3) Question types asked of Xpert Learning Assistant:
+(2) Question types asked of Xpert Learning Assistant:
 
 (a) geoJSON format
 
