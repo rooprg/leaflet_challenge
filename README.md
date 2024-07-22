@@ -3,9 +3,9 @@ Leaflet Challenge
 
 Deliverables:
 
-(1) My Leaflet Part I Javascript code is in the file titled "logic.js" in the static folder (and uses index.html and style.css provided)
+(1) My Leaflet Part 1 Javascript code is in the file titled "logic.js" in the static folder (and uses index.html and style.css provided)
 
-(2) My html file visualized here: https://rooprg.github.io/leaflet_challenge/
+(2) My html file visualized here: https://rooprg.github.io/leaflet_challenge/ (as well as a png titled "leaflet_part_1_21_jul_2024" in the leaflet_part_1 folder).
 
 
 Citations:
