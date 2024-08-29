@@ -74,24 +74,5 @@ function createCircles(response) {
 // Perform an API call to the API to get the earthquake information. Call createCircles when it completes.
 d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson").then(createCircles);
 
-// Configure the legend
-let legend = L.control({ position: "bottomright" });
-legend.onAdd = function() {
-    let div = L.DomUtil.create("div", "info legend");
-    let legendLimits = ['less than 10 feet below', '10 to 30 feet below', '30 to 50 feet below', '50 to 70 feet below', '70 to 90 feet below', 'deeper than 90 feet'];
-    let legendColors = ["#92BF50", "#FFFAA0", "#FAFA33", "#FFFF00", "#FFC000", "#FF0000", ];
-    let labels = [];
-    
-    // Add the minimum and maximum.
-    let legendInfo = "<h2>Quake Depth</h2>"
 
-    div.innerHTML = legendInfo;
-
-    legendLimits.forEach(function(legendLimit, index) {
-        labels.push("<li style=\"background-color: " + legendColors[index] + "\">" + legendLimit + "</li>");
-    });
-
-    div.innerHTML += "<ul>" + labels.join("") + "</ul>";
-    return div;
-  };
 
