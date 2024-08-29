@@ -51,17 +51,27 @@ Here is a .png file demonstrating the map:
 **(6) Ethical Considerations:**
 
 
-(Discuss any ethical considerations taken into account during the project, such as data privacy, bias, or fairness)
+The data used for this exercise is available on a publically available source, the usgs.com website. There seems to be no sensitive in this dataset that would require constraints on its use.
+
 
 
 **(7) Instructions for Interacting with the Project:**
 
+(a) Within the **static** folder, several important files are stored in various folders:
 
-Leaflet Part 1 Javascript code is in the file titled "logic.js" in the static folder (and uses index.html and style.css provided)
-
-The .html file visualized here: https://rooprg.github.io/leaflet_challenge/ (as well as a png titled "leaflet_part_1_21_jul_2024" in the leaflet_part_1 folder).
+     (i)Javascript code is in the file titled "logic.js" in the **static** folder (and uses index.html and style.css provided).
 
 
+     (ii) The css information is in the file titled "style.css" in the **css** folder.
+
+
+(b) The "index.html" file is stored in the main folder.  It can be visualized here: https://rooprg.github.io/leaflet_challenge/ (as well as a png titled "leaflet_part_1_21_jul_2024" in the **leaflet_part_1** folder).
+
+
+(c) The **leaflet_part_2** folder is empty.
+
+
+(d) Photos used to describe the exercise and its output are stored in the **Images** folder. These are not considered part of the exercise.
 
 
 **(8) Citations:**
