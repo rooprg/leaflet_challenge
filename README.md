@@ -59,7 +59,7 @@ The data used for this exercise is available on a publically available source, t
 
 (a) Within the **static** folder, several important files are stored in various folders:
 
-     (i)Javascript code is in the file titled "logic.js" in the **static** folder (and uses index.html and style.css provided).
+     (i) Javascript code is in the file titled "logic.js" in the **static** folder (and uses index.html and style.css provided).
 
 
      (ii) The css information is in the file titled "style.css" in the **css** folder.
